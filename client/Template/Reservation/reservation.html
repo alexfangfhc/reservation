@@ -1,0 +1,81 @@
+<template name="reservation">
+    <div class="reservationList">
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">Guest Name</th>
+                <th scope="col">Guest Contact Info</th>
+                <th scope="col">Expected Arrival Time</th>
+                <th scope="col">Number of Guest</th>
+                {{#if isInRole 'admin' null}}
+                    <th scope="col">Reserved Table Number</th>
+                {{/if}}
+                <th scope="col">Status</th>
+                <th scope="col">Last Updated at</th>
+            </tr>
+            </thead>
+            {{#if reservation.length}}
+                {{#each reservation}}
+                    <tbody>
+                    <tr>
+                        <td><input type="text" id="{{this._id}}_guestName" class="form-control"
+                                   value="{{this.guestName}}">
+                        </td>
+                        <td><input type="text" id="{{this._id}}_guestContactInfo" class="form-control"
+                                   value="{{this.guestContactInfo}}"></td>
+                        <td><input type="text" id="{{this._id}}_expectedArrivalTime" class="form-control"
+                                   value="{{this.expectedArrivalTime}}"></td>
+                        <td><input type="text" id="{{this._id}}_reservedTableSize" class="form-control"
+                                   value="{{this.reservedTableSize}}"></td>
+
+                        {{#if isInRole 'admin' null}}
+                            <td>{{this.reservedTableNumber}}</td>
+                        {{/if}}
+                        <td>{{this.status}}</td>
+                        <td>{{this.updatedUser}}</td>
+                        {{#if showBtn this.status}}
+                            <td>
+                                <button class="btnUpdate" id="{{this._id}}" style="float: right">update</button>
+                            </td>
+                            <td>
+                                <button class="btnCancel" id="{{this._id}}" style="float: right">cancel</button>
+                            </td>
+                            {{#if isInRole 'admin' null}}
+                                <td>
+                                    <button class="btnComplete" id="{{this._id}}" style="float: right">complete</button>
+                                </td>
+                            {{/if}}
+                        {{/if}}
+                    </tr>
+                    </tbody>
+                {{/each}}
+            {{else}}
+                <tbody>
+                <tr>
+                    <td colspan="14" class="text-center">no reservation data</td>
+                </tr>
+                </tbody>
+            {{/if}}
+        </table>
+        <button class="btn btnDefault" type="button">new reservation
+        </button>
+        {{#if isInRole 'admin' null}}
+            <br>
+            <label>View by date:</label>
+            <div class="col-lg-2">
+                <input id="viewByDate" type="date" class="form-control">
+            </div>
+            <button class="btn btnViewByDate" type="button">view
+            </button>
+        {{/if}}
+
+    </div>
+    {{#if isInRole 'admin' null}}
+        <button class="btnViewAll" style="float: right">View all</button>
+        <button class="btnViewCompletedReservation" style="float: right">View completed reservation</button>
+        <button class="btnViewCanceledReservation" style="float: right">View canceled reservation</button>
+        <button class="btnViewReservedReservation" style="float: right">View reserved reservation</button>
+        <button class="btnViewTables" style="float: right">View tables</button>
+    {{/if}}
+    <button class="btnLogout" style="float: right">Logout</button>
+</template>

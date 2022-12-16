@@ -1,0 +1,29 @@
+version: "3.2"
+
+services:
+  hilton-reservation:
+    build:
+      context: .
+    container_name: hilton-reservation
+    depends_on:
+      - mongodb
+    environment:
+      ROOT_URL: 'http://localhost:3000'
+      PORT: 3000
+    links:
+      - mongodb
+    image: hilton-reservation
+    ports:
+      - "4000:3000"
+      - "4002:3002"
+      - "4001:3001"
+
+  mongodb:
+    image: mongo:3.6
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"
+

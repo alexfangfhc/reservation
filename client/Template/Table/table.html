@@ -1,0 +1,38 @@
+<template name="table">
+    <div class="tableList">
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">table number</th>
+                <th scope="col">description</th>
+                <th scope="col">table size</th>
+                <th scope="col">status</th>
+            </tr>
+            </thead>
+            {{#if table.count}}
+                {{#each table}}
+                    <tbody>
+                    <tr>
+                        <td>{{this.tableNumber}}</td>
+                        <td>{{this.description}}</td>
+                        <td>{{this.size}}</td>
+                        <td>{{this.isDisabled}}</td>
+                        <td>
+                            <button class="" style="float: right">disable</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                {{/each}}
+            {{else}}
+                <tbody>
+                <tr>
+                    <td colspan="14" class="text-center">no data!</td>
+                </tr>
+                </tbody>
+            {{/if}}
+        </table>
+    </div>
+    <button class="btn btn-warning" type="button" id="btnBack"
+    >Back
+    </button>
+</template>

@@ -1,0 +1,34 @@
+<template name="newReservation">
+    <div id="newReservation">
+        <div class="row">
+            <label>Guest Name:</label>
+            <div class="col-lg-2">
+                <input id="guestName" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <label>Guest Contact Info:</label>
+            <div class="col-lg-2">
+                <input id="guestContactInfo" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <label>Expected Arrival Time:</label>
+            <div class="col-lg-2">
+                <input id="expectedArrivalTime" type="datetime-local" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <label>Number of Guest:</label>
+            <div class="col-lg-2">
+                <input id="numberOfGuest" type="text" class="form-control">
+            </div>
+        </div>
+        <button class="btn btn-success" type="button" id="btnAddReservation"
+                >OK
+        </button>
+        <button class="btn btn-warning" type="button" id="btnBack"
+        >Back
+        </button>
+    </div>
+</template>
