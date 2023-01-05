@@ -9,16 +9,19 @@
                 <th scope="col">status</th>
             </tr>
             </thead>
-            {{#if table.count}}
+            {{#if table.length}}
                 {{#each table}}
                     <tbody>
                     <tr>
                         <td>{{this.tableNumber}}</td>
                         <td>{{this.description}}</td>
                         <td>{{this.size}}</td>
-                        <td>{{this.isDisabled}}</td>
+                        <td>{{this.status}}</td>
                         <td>
-                            <button class="" style="float: right">disable</button>
+                            <button class="disableTable" name="disableTable" style="float: right">disable</button>
+                        </td>
+                        <td>
+                            <button class="enableTable" name="enableTable" style="float: right">enable</button>
                         </td>
                     </tr>
                     </tbody>
@@ -34,5 +37,8 @@
     </div>
     <button class="btn btn-warning" type="button" id="btnBack"
     >Back
+    </button>
+    <button class="btn btn-success" type="button" id="btnAddTable"
+    >add table
     </button>
 </template>

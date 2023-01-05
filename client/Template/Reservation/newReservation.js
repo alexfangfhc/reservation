@@ -18,6 +18,7 @@ Template.newReservation.events({
         alert('error')
       } else {
         alert(result)
+        Router.go('/reservation');
       }
     });
   },

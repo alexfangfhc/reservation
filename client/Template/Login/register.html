@@ -1,4 +1,4 @@
-<template name="login">
+<template name="register">
     <div>
         <label class="control-label">
             username
@@ -11,12 +11,20 @@
         <div class="input-icon">
             <input class="form-control" type="password" autocomplete="off" placeholder="password" name="password"
                 id="pwd_content" />
-            <button class="btn" id="login">
-                login
-            </button>
-            <button class="btn" id="register">
-                go to register
-            </button>
+
+        </div>
+        <label class="control-label">
+            email
+        </label>
+        <div class="input-icon">
+            <input class="form-control" type="text" autocomplete="off" placeholder="email" name="email"
+                id="email_content" />
+                <button class="btn" id="cancel">
+                    cancel
+                </button>
+                <button class="btn" id="register">
+                    register
+                </button>
         </div>
 
     </div>

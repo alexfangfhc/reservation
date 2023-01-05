@@ -8,24 +8,39 @@ Template.table.onCreated(function () {
 });
 Template.table.helpers({
   table: function () {
-    return Tables.find();
+    const tables = Tables.find().fetch()
+    tables.map(table => {
+      table.status = table.isDisabled ? 'disabled' : 'enabled';
+      return table;
+    })
+    return tables;
   },
 
 });
 Template.table.events({
-  "click .addTable": function (event) {
-    var number = $("#" + this._id)[0].value;
-    console.log(number)
-    if (this.userId && number) {
-      Meteor.call('addTable', this.userId, number, function (err) {
-        if (!err) {
-          alert('Table added.');
+  "click #btnAddTable": function (event) {
+    Router.go('/addTable');
+  },
+  "click #btnBack": function (event) {
+    Router.go('/reservation');
+  },
+  "click .disableTable": function (event) {
+    if (Meteor.userId && this._id) {
+      Meteor.call('disableTable', this._id, function (err, result) {
+        if (err) {
+          console.log(err);
         }
       })
     }
   },
-  "click #btnBack": function (event) {
-    Router.go('/reservation');
+  "click .enableTable": function (event) {
+    if (Meteor.userId && this._id) {
+      Meteor.call('enableTable', this._id, function (err, result) {
+        if (err) {
+          console.log(err);
+        }
+      })
+    }
   },
 });
 Template.table.onDestroyed(function () {
